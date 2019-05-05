@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="normalBmiCalculator" class="com.javalec.ex.BMICalculator">
+        <property name="lowWeight" value="18"/>
+        <property name="normalWeight" value="24"/>
+        <property name="overWeight" value="30"/>
+        <property name="obesity" value="40"/>
+    </bean>
+    <bean id="strangeBmiCalculator" class="com.javalec.ex.BMICalculator">
+        <property name="lowWeight" value="5"/>
+        <property name="normalWeight" value="7"/>
+        <property name="overWeight" value="10"/>
+        <property name="obesity" value="12"/>
+    </bean>
+    <!--Use constructor-->
+    <bean id="myInfo1" class="com.javalec.ex.MyInfo">
+       <constructor-arg>
+           <value>tt</value>
+       </constructor-arg>
+        <constructor-arg>
+            <value>77</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>180</value>
+        </constructor-arg>
+        <constructor-arg>
+            <list>
+                <value>draw</value>
+                <value>basketball</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="normalBmiCalculator"/>
+        </constructor-arg>
+    </bean>
+    <bean id="myInfo2" class="com.javalec.ex.MyInfo">
+        <constructor-arg value="kk"/>
+        <constructor-arg value="77"/>
+        <constructor-arg value="179"/>
+        <constructor-arg>
+            <list>
+                <value>football</value>
+                <value>watchingTV</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="normalBmiCalculator"/>
+        </constructor-arg>
+    </bean>
+    <!--Use setter-->
+<!--    <bean id="myInfo" class="com.javalec.ex.MyInfo">-->
+<!--        <property name="name" value="Mr.hong"/>-->
+<!--        <property name="weight" value="77.7"/>-->
+<!--        <property name="height" value="179"/>-->
+<!--        <property name="hobby">-->
+<!--            <list>-->
+<!--                <value>football</value>-->
+<!--                <value>watch</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="bmiCalculator">-->
+<!--            <ref bean="bmiCalculator"/>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <!--You can choose pencil class to use. It can modify pencil type by using DI!-->
+    <bean id="pencil" class="com.javalec.ex.Pencil4B"/>
+</beans>
