@@ -3,13 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="logAop" class="com.javalec.ex.LogAop"/>
-    <aop:config>
-        <aop:aspect id="logger" ref="logAop">
-            <aop:pointcut id="publicM" expression="within(com.javalec.ex.*)" />
-            <aop:around pointcut-ref="publicM" method="loggerAop" />
-        </aop:aspect>
-    </aop:config>
+    <!--use annotation-->
+    <aop:aspectj-autoproxy />
+    <bean id="logAopWithAnnotation" class="com.javalec.ex.LogAppWithAnnotation" />
+
+    <!--use xml-->
+<!--    <bean id="logAop" class="com.javalec.ex.LogAop"/>-->
+<!--    <aop:config>-->
+<!--        <aop:aspect id="logger" ref="logAop">-->
+<!--            <aop:pointcut id="publicM" expression="within(com.javalec.ex.*)" />-->
+<!--            <aop:around pointcut-ref="publicM" method="loggerAop" />-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
 
     <bean id="student" class="com.javalec.ex.Student">
         <property name="name" value="hong"/>
